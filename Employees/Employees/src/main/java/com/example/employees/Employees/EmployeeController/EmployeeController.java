@@ -28,4 +28,19 @@ public class EmployeeController {
         return "WELCOME WORLD!";
     }
 
+    @GetMapping("/display/welcome/{id}")
+    public String displayentity(@PathVariable("id") int id){
+        Employeeentity employeeentity2 = employeeRepoImpl.getEmployeeDetails(id);
+        String name= employeeentity2.getName();
+        return name;
+    }
+
+    @GetMapping("/display/city/{id}")
+    public String displayCity(@PathVariable("id") int id){
+        Employeeentity employeeCity = employeeRepoImpl.getEmployeeDetails(id);
+       String city =  employeeCity.getAddressResponse().getCity();
+       return city;
+
+    }
+
 }
